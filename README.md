@@ -25,7 +25,7 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 2. VS Code 명령 팔레트에서 `Extensions: Install from VSIX...`를 실행하거나, 터미널에서 설치합니다.
 
    ```bash
-   code --install-extension yuginong-icons-0.1.0.vsix
+   code --install-extension yuginong-icons-0.1.1.vsix
    ```
 
 3. 명령 팔레트에서 `Preferences: File Icon Theme`를 열고 **Yuginong Icons**를 고릅니다.
@@ -306,8 +306,8 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 2. 같은 버전으로 태그를 푸시하면 GitHub Actions가 `.vsix`를 만들어 Release에 올립니다.
 
    ```bash
-   git tag v0.1.0
-   git push origin v0.1.0
+   git tag v0.1.1
+   git push origin v0.1.1
    ```
 
 태그와 `package.json`의 버전이 다르면 빌드가 실패합니다. 릴리스 노트는 GitHub가 커밋 기록으로 자동으로 만듭니다.

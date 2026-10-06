@@ -1,37 +1,26 @@
 {
-	"name": "yuginong-icons",
-	"displayName": "Yuginong Icons",
-	"description": "Outline file and folder icons for the Yuginong Light color theme",
-	"version": "0.1.0",
-	"publisher": "faavilla",
-	"license": "MIT",
-	"homepage": "https://github.com/Faavilla/yuginong-icons#readme",
-	"bugs": {
-		"url": "https://github.com/Faavilla/yuginong-icons/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/Faavilla/yuginong-icons.git"
-	},
-	"engines": {
-		"vscode": "^1.80.0"
-	},
-	"categories": [
-		"Themes"
-	],
-	"keywords": [
-		"icon-theme",
-		"icons",
-		"outline",
-		"hugo"
-	],
-	"contributes": {
-		"iconThemes": [
-			{
-				"id": "yuginong-icons",
-				"label": "Yuginong Icons",
-				"path": "./icons/yuginong-icon-theme.json"
-			}
-		]
-	}
+  "name": "yuginong-icons",
+  "displayName": "Yuginong Icons",
+  "description": "Yuginong Light와 짝을 이루는 아웃라인 아이콘 테마. 파일·폴더 종류별 구분 확실하게.",
+  "version": "0.1.1",
+  "publisher": "yuginong-themes",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Themes"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Faavilla/yuginong-icons.git"
+  },
+  "contributes": {
+    "iconThemes": [
+      {
+        "id": "Yuginong Icons",
+        "label": "Yuginong Icons",
+        "path": "./icons/yuginong-icon-theme.json"
+      }
+    ]
+  }
 }
