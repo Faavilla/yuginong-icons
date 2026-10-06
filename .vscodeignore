@@ -1,0 +1,9 @@
+# Repository files not needed in the extension package
+.github/**
+.gitignore
+
+# Local-only folders and files (gitignored, but vsce packages from the working tree)
+.vscode/**
+.claude/**
+PLAN.md
+yuginong-light-color-theme.json

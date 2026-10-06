@@ -1,0 +1,37 @@
+{
+	"name": "yuginong-icons",
+	"displayName": "Yuginong Icons",
+	"description": "Outline file and folder icons for the Yuginong Light color theme",
+	"version": "0.1.0",
+	"publisher": "faavilla",
+	"license": "MIT",
+	"homepage": "https://github.com/Faavilla/yuginong-icons#readme",
+	"bugs": {
+		"url": "https://github.com/Faavilla/yuginong-icons/issues"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/Faavilla/yuginong-icons.git"
+	},
+	"engines": {
+		"vscode": "^1.80.0"
+	},
+	"categories": [
+		"Themes"
+	],
+	"keywords": [
+		"icon-theme",
+		"icons",
+		"outline",
+		"hugo"
+	],
+	"contributes": {
+		"iconThemes": [
+			{
+				"id": "yuginong-icons",
+				"label": "Yuginong Icons",
+				"path": "./icons/yuginong-icon-theme.json"
+			}
+		]
+	}
+}

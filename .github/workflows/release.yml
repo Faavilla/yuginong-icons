@@ -1,0 +1,83 @@
+# Packages the icon theme into a .vsix and attaches it to a GitHub release on every v* tag push
+name: vsix package and release
+
+permissions:
+  contents: write # Needed to create the release and upload the .vsix
+
+on:
+  push:
+    tags: [ 'v*' ]
+
+env:
+  # Pinned so a new vsce release can't change the build; vsce 4 needs Node 22+, which ubuntu-latest ships
+  VSCE_VERSION: 4.0.0
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10 # The default is 360; a stuck npx download shouldn't hold the runner that long
+
+    steps:
+      # Pinned to a commit SHA: tags can be moved to point at other commits
+      - name: Checkout repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false # The release step authenticates on its own
+
+      # A mismatched tag would publish a release whose .vsix carries a different version
+      - name: Check tag matches package.json version
+        run: |
+          PACKAGE_VERSION="v$(node -p "require('./package.json').version")"
+          if [ "${GITHUB_REF_NAME}" != "${PACKAGE_VERSION}" ]; then
+            echo "::error::Tag ${GITHUB_REF_NAME} does not match package.json version ${PACKAGE_VERSION}"
+            exit 1
+          fi
+
+      # vsce does not read the icon theme; a broken JSON, a missing SVG or an uppercase key
+      # would still package fine and only show up as missing icons inside VS Code
+      - name: Validate icon theme
+        run: |
+          node -e '
+            const fs = require("fs");
+            const path = require("path");
+            const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+            for (const t of pkg.contributes.iconThemes) {
+              if (!fs.existsSync(t.path)) throw new Error(`icon theme file missing: ${t.path}`);
+              const theme = JSON.parse(fs.readFileSync(t.path, "utf8"));
+              const defs = theme.iconDefinitions || {};
+              for (const [id, def] of Object.entries(defs)) {
+                const svg = path.join(path.dirname(t.path), def.iconPath);
+                if (!fs.existsSync(svg)) throw new Error(`${id}: ${svg} missing`);
+              }
+              const refs = ["file", "folder", "folderExpanded", "rootFolder", "rootFolderExpanded"].map(k => theme[k]).filter(Boolean);
+              for (const k of ["fileExtensions", "fileNames", "languageIds", "folderNames", "folderNamesExpanded"]) {
+                refs.push(...Object.values(theme[k] || {}));
+                const upper = Object.keys(theme[k] || {}).filter(key => k !== "languageIds" && key !== key.toLowerCase());
+                if (upper.length) throw new Error(`${t.path}: ${k} keys must be lowercase: ${upper.join(", ")}`);
+              }
+              const undefinedIcons = [...new Set(refs.filter(id => !defs[id]))];
+              if (undefinedIcons.length) throw new Error(`${t.path}: undefined icons referenced: ${undefinedIcons.join(", ")}`);
+              console.log(`${t.path}: ${Object.keys(defs).length} icons, ${Object.keys(theme.fileExtensions || {}).length} extensions, ${Object.keys(theme.fileNames || {}).length} file names, ${Object.keys(theme.folderNames || {}).length} folder names`);
+            }
+          '
+
+      # vsce names the file <name>-<version>.vsix from package.json
+      - name: Package .vsix
+        run: |
+          echo "Node : $(node --version)"
+          npx -y "@vscode/vsce@${VSCE_VERSION}" package
+
+      # VS Code only loads package.json and what it points to, so those must be byte-for-byte the source.
+      # Catches packaging mistakes; it runs in the same job as vsce, so it is no defense against a malicious dependency
+      - name: Verify .vsix payload matches source
+        run: |
+          unzip -q ./*.vsix -d "${RUNNER_TEMP}/vsix"
+          cmp package.json "${RUNNER_TEMP}/vsix/extension/package.json"
+          diff -r icons "${RUNNER_TEMP}/vsix/extension/icons"
+          unzip -l ./*.vsix
+
+      # --verify-tag stops gh from creating the tag on the default branch if it is missing
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh release create "${GITHUB_REF_NAME}" ./*.vsix --verify-tag --title "${GITHUB_REF_NAME}" --generate-notes

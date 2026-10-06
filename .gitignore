@@ -1,0 +1,22 @@
+# VS Code extension package
+*.vsix
+
+# Environment variables
+.env
+.env.local
+
+# Editor settings
+.vscode
+.idea
+*.swp
+
+# Mac system files
+.DS_Store
+._*
+
+# Claude AI
+.claude
+
+# Local-only working files
+PLAN.md
+yuginong-light-color-theme.json
