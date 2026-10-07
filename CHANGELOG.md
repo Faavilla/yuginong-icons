@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.2.0
+
+그림 기호 대신 확장자 글자를 보여 주는 디자인으로 다시 만들었습니다. 확장 ID와 아이콘 테마 ID는 0.1.1과 같아서 새 `.vsix`를 설치하면 그대로 바뀝니다.
+
+### 파일
+
+- 테두리·배경 없이 확장자 글자만 표시 (`.md`는 MD, `.json`은 JSON). 1.2px 선으로 그린 경로라 글꼴과 상관없이 같은 모양
+- 최대 4글자. 1–3글자는 보통 폭에 글자 사이 최대 1.2px, 4글자는 좁은 글자로 16px을 채움
+- 확장자로만 구분: 파일 이름별 아이콘(`README.md`, `package.json`, `hugo.toml`, `_index.md` 등)과 두 단 확장자(`*.test.ts`, `*.d.ts`, `*.min.js`) 연결을 없앰. 이런 파일은 마지막 확장자 글자로 보임
+- 확장자 없는 이름 26개(`LICENSE`, `Dockerfile`, `Makefile`, `Procfile` 등)만 이름 약어로 연결. 점으로 시작하는 파일(`.gitignore`, `.editorconfig`)은 확장자로 연결
+- 이미지·오디오·영상·폰트·압축·오피스·3D·디자인 파일은 확장자 그대로 표시 (PNG, JPG, MP4, WOFF, ZIP 등)
+- 한 아이콘을 같이 쓰던 다른 형식·언어를 나눔: 셸(BAT, CMD, FISH, NU), 템플릿 엔진(PUG, NJK, LIQ, TWIG, HBS, EJS, ERB, JINJ, JSP, RAZR), 빌드(CMAK, GRDL, BZL), 다이어그램(DIO, MMD, PUML, EXC, D2), 셰이더(GLSL, HLSL, WGSL, MTL) 등
+- 확장자 추가: 이미지(HEIC, JXL, 카메라 RAW 등), 영상·오디오, 3D·CAD, 압축·설치 파일, 문서·전자책·자막, 데이터·머신러닝 파일, 언어 30여 종
+- 형식을 모르는 파일은 기본 파일 모양
+
+### 폴더
+
+- 닫힌 폴더·열린 폴더 두 가지만 남김. 특수 폴더 아이콘 70종과 루트 폴더 아이콘 없앰
+- 색을 중립 회색 → Yuginong Light 강조색 녹색 `#13694D`으로 바꿈
+
+### 수치
+
+- 아이콘 300개 → 424개 (파일 글자 421종 + 파일·폴더·열린 폴더)
+- 연결: 확장자 494개 → 671개, 파일 이름 346개 → 26개, 언어 ID 148개, 폴더 이름 244개 → 0개
+
 ## 0.1.1
 
 - 게시자(publisher)를 색 테마와 같은 `yuginong-themes`로 바꿈. 확장 ID가 `faavilla.yuginong-icons`에서 `yuginong-themes.yuginong-icons`로 바뀌므로, 0.1.0을 설치했다면 먼저 지우고 설치해야 함 (`code --uninstall-extension faavilla.yuginong-icons`)
