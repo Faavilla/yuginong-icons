@@ -9,15 +9,15 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 ## 특징
 
 <!-- stats:start -->
-- 아이콘 424개: 파일 글자 421종과 기본 아이콘 3개(형식을 모르는 파일, 닫힌 폴더, 열린 폴더)입니다. 확장자 671개, 확장자 없는 파일 이름 26개, 언어 ID 148개에 연결됩니다.
+- 아이콘 424개: 파일 글자 421종과 기본 아이콘 3개(형식을 모르는 파일, 닫힌 폴더, 열린 폴더)입니다. 확장자 672개, 확장자 없는 파일 이름 26개, 언어 ID 148개에 연결됩니다.
 <!-- stats:end -->
 - 파일은 테두리나 배경 없이 확장자 글자만 보여 줍니다. `.md`는 MD, `.json`은 JSON, `.png`는 PNG입니다.
-- 글자는 1.2px 선으로 직접 그린 경로입니다. 설치된 글꼴과 상관없이 어디서나 같은 모양으로 보입니다.
-- 글자는 최대 4글자입니다. 1–3글자는 보통 폭으로 글자 사이를 넉넉히 띄우고, 4글자는 좁은 글자로 16px 폭을 꽉 채웁니다.
+- 글자는 1.2px 선으로 직접 그린 경로입니다. 모든 획을 픽셀 격자에 맞춰서 일반 화면과 레티나 화면 모두에서 또렷하고, 설치된 글꼴과 상관없이 같은 모양으로 보입니다.
+- 글자는 최대 4글자입니다. 글자 사이는 1픽셀로 일정하고, 4글자는 좁은 글자로 16px 폭을 채웁니다.
 - 확장자로만 구분합니다. 이미지·영상·폰트·압축·문서 같은 형식 파일은 확장자를 그대로 쓰고, 프로그래밍 언어는 변형 확장자를 하나로 묶습니다(`.ts`, `.mts`, `.cts`는 모두 TS).
 - 폴더는 닫힌 폴더와 열린 폴더 두 가지뿐이며, Yuginong Light의 강조색인 녹색입니다.
-- Yuginong Light 팔레트에서 가져온 색만 씁니다. 모든 색이 탐색기의 기본·hover·선택 배경에서 대비 3:1 이상입니다.
-- lock 파일, 로그, 소스맵, 컴파일 결과물, 백업처럼 만들어지거나 임시로 생기는 파일은 흐린 색으로 구분합니다.
+- Yuginong Light 팔레트를 바탕으로 한 색을 씁니다. 중립과 흐린 중립은 테마의 회색을 대비에 맞춰 조금 조정한 색입니다. 모든 색이 탐색기의 기본·hover·선택 배경에서 대비 3:1 이상입니다.
+- `.lock`·`.lockb` 파일, 로그, 소스맵, 컴파일 결과물, 백업처럼 만들어지거나 임시로 생기는 파일은 흐린 색으로 구분합니다.
 - 라이트 테마 전용입니다.
 
 ## 설치
@@ -28,7 +28,7 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 2. VS Code 명령 팔레트에서 `Extensions: Install from VSIX...`를 실행하거나, 터미널에서 설치합니다.
 
    ```bash
-   code --install-extension yuginong-icons-0.2.0.vsix
+   code --install-extension yuginong-icons-0.2.1.vsix
    ```
 
 3. 명령 팔레트에서 `Preferences: File Icon Theme`를 열고 **Yuginong Icons**를 고릅니다.
@@ -256,7 +256,7 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 | LIC | 중립 |  | `copying`, `licence`, `license`, `unlicense` |  |
 | LIQ | 주황 | `.liquid` |  | `liquid` |
 | LISP | 중립 | `.lisp`, `.lsp` |  | `commonlisp`, `lisp` |
-| LOCK | 흐린 중립 | `.lock` |  |  |
+| LOCK | 흐린 중립 | `.lock`, `.lockb` |  |  |
 | LOG | 흐린 중립 | `.log` |  | `log` |
 | LRC | 청록 | `.lrc` |  |  |
 | LS | 청록 | `.ls` |  |  |
@@ -491,7 +491,7 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 ## 알아둘 점
 
 - 확장자가 없는 이름(`LICENSE`, `Dockerfile`, `Makefile`, `Procfile` 등)은 이름을 줄인 글자로 보여 줍니다. 점으로 시작하는 파일(`.gitignore`, `.editorconfig` 등)은 VS Code가 점 뒤를 확장자로 보기 때문에 확장자처럼 연결합니다.
-- `README.md`, `package.json`, `tsconfig.json`처럼 확장자가 있는 파일은 이름과 상관없이 확장자 글자(MD, JSON)로 보입니다. `*.test.ts`, `*.d.ts`, `*.min.js`도 마지막 확장자(TS, JS)를 따릅니다.
+- `README.md`, `package.json`, `tsconfig.json`처럼 확장자가 있는 파일은 이름과 상관없이 확장자 글자(MD, JSON)로 보입니다. `*.test.ts`, `*.d.ts`, `*.min.js`도 마지막 확장자(TS, JS)를 따르고, `package-lock.json`, `pnpm-lock.yaml`처럼 다른 확장자를 쓰는 lock 파일도 확장자 글자(JSON, YML)로 보입니다.
 - 목록에 없는 확장자는 VS Code가 알아본 언어의 글자로 보이고, 그것도 없으면 기본 파일 아이콘으로 보입니다.
 - `.m`(Objective-C·MATLAB), `.v`(Verilog·V·Coq)처럼 여러 언어가 같이 쓰는 확장자는 VS Code가 판단한 언어로 구분합니다. 해당 언어 확장이 설치돼 있어야 맞는 글자가 나옵니다.
 - 폴더는 이름과 상관없이 모두 같은 모양입니다. 열림과 닫힘만 구분합니다.
@@ -503,8 +503,8 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 2. 같은 버전으로 태그를 푸시하면 GitHub Actions가 `.vsix`를 만들어 Release에 올립니다.
 
    ```bash
-   git tag v0.2.0
-   git push origin v0.2.0
+   git tag v0.2.1
+   git push origin v0.2.1
    ```
 
 태그와 `package.json`의 버전이 다르면 빌드가 실패합니다. 릴리스 노트는 GitHub가 커밋 기록으로 자동으로 만듭니다.
