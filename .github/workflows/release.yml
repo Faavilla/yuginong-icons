@@ -74,6 +74,8 @@ jobs:
           unzip -q ./*.vsix -d "${RUNNER_TEMP}/vsix"
           cmp package.json "${RUNNER_TEMP}/vsix/extension/package.json"
           diff -r icons "${RUNNER_TEMP}/vsix/extension/icons"
+          ICON="$(node -p "require('./package.json').icon || ''")"
+          [ -z "${ICON}" ] || cmp "${ICON}" "${RUNNER_TEMP}/vsix/extension/${ICON}"
           unzip -l ./*.vsix
 
       # --verify-tag stops gh from creating the tag on the default branch if it is missing
