@@ -2,8 +2,10 @@
   "name": "yuginong-icons",
   "displayName": "Yuginong Icons",
   "description": "Yuginong Light와 짝을 이루는 글자 아이콘 테마. 확장자별 구분 확실하게.",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "publisher": "yuginong-themes",
+  "license": "MIT",
+  "icon": "icon-yuginong-icons.png",
   "engines": {
     "vscode": "^1.90.0"
   },

@@ -1,55 +1,40 @@
 # Yuginong Icons
 
-Text-label file icons for VS Code, made to pair with the Yuginong Light color theme.
+VS Code용 **파일 아이콘 테마**입니다. 파일마다 확장자를 글자 그대로 보여 줘서 종류를 바로 구분할 수 있게 했습니다.
 
-Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 아이콘 테마입니다. 파일은 그림 대신 확장자 글자로 보여 줍니다.
+[Yuginong Light](https://github.com/Faavilla/yuginong-theme) 테마와 함께 쓰도록 만들었습니다.
 
 클로드랑 같이 만들었습니다.
 
-## 특징
+## 설치
+
+마켓플레이스에는 올리지 않고 GitHub Releases로만 배포합니다.
+
+1. [Releases](https://github.com/Faavilla/yuginong-icons/releases/latest)에서 `yuginong-icons-<버전>.vsix`를 내려받습니다.
+2. VS Code 확장 뷰(`Ctrl+Shift+X`, macOS는 `Cmd+Shift+X`) 오른쪽 위 `...` 메뉴에서 **Install from VSIX...**를 선택하고 내려받은 파일을 고릅니다.
+3. 명령 팔레트(`Ctrl+Shift+P`, macOS는 `Cmd+Shift+P`)에서 **Preferences: File Icon Theme**을 열고 **Yuginong Icons**를 선택합니다.
+
+터미널에서 설치할 수도 있습니다.
+
+```bash
+code --install-extension yuginong-icons-<버전>.vsix
+```
+
+VS Code 1.90.0 이상이 필요합니다.
+
+## 업데이트
+
+마켓플레이스를 거치지 않아 자동 업데이트되지 않습니다. 새 버전의 `.vsix`를 같은 방법으로 설치하면 기존 버전을 덮어씁니다.
+
+## 아이콘
 
 <!-- stats:start -->
 - 아이콘 424개: 파일 글자 421종과 기본 아이콘 3개(형식을 모르는 파일, 닫힌 폴더, 열린 폴더)입니다. 확장자 672개, 확장자 없는 파일 이름 26개, 언어 ID 148개에 연결됩니다.
 <!-- stats:end -->
-- 파일은 테두리나 배경 없이 확장자 글자만 보여 줍니다. `.md`는 MD, `.json`은 JSON, `.png`는 PNG입니다.
-- 글자는 1.2px 선으로 직접 그린 경로입니다. 모든 획을 픽셀 격자에 맞춰서 일반 화면과 레티나 화면 모두에서 또렷하고, 설치된 글꼴과 상관없이 같은 모양으로 보입니다.
-- 글자는 최대 4글자입니다. 글자 사이는 1픽셀로 일정하고, 4글자는 좁은 글자로 16px 폭을 채웁니다.
-- 확장자로만 구분합니다. 이미지·영상·폰트·압축·문서 같은 형식 파일은 확장자를 그대로 쓰고, 프로그래밍 언어는 변형 확장자를 하나로 묶습니다(`.ts`, `.mts`, `.cts`는 모두 TS).
-- 폴더는 닫힌 폴더와 열린 폴더 두 가지뿐이며, Yuginong Light의 강조색인 녹색입니다.
-- Yuginong Light 팔레트를 바탕으로 한 색을 씁니다. 중립과 흐린 중립은 테마의 회색을 대비에 맞춰 조금 조정한 색입니다. 모든 색이 탐색기의 기본·hover·선택 배경에서 대비 3:1 이상입니다.
-- `.lock`·`.lockb` 파일, 로그, 소스맵, 컴파일 결과물, 백업처럼 만들어지거나 임시로 생기는 파일은 흐린 색으로 구분합니다.
-- 라이트 테마 전용입니다.
-
-## 설치
-
-마켓플레이스에는 올리지 않고 [GitHub Releases](https://github.com/Faavilla/yuginong-icons/releases)에서 `.vsix`로 배포합니다.
-
-1. Releases에서 `yuginong-icons-<버전>.vsix`를 내려받습니다.
-2. VS Code 명령 팔레트에서 `Extensions: Install from VSIX...`를 실행하거나, 터미널에서 설치합니다.
-
-   ```bash
-   code --install-extension yuginong-icons-0.2.1.vsix
-   ```
-
-3. 명령 팔레트에서 `Preferences: File Icon Theme`를 열고 **Yuginong Icons**를 고릅니다.
-
-자동 업데이트는 되지 않습니다. 새 버전의 `.vsix`를 같은 방법으로 설치하면 기존 버전을 덮어씁니다.
-
-## 색
-
-| 색 | 쓰임 |
-|---|---|
-| `#585C78` 중립 | 형식을 모르는 파일, 텍스트, 설정, 셸 |
-| `#686C88` 흐린 중립 | 생성물·임시 파일 |
-| `#8B2B4E` 와인 | CSS·Sass, Ruby, Scala, 인증서·키, 디자인 파일 등 |
-| `#4D337B` 보라 | Markdown·문서, 폰트, 전자책, Kotlin, C# 등 |
-| `#832508` 주황 | HTML·템플릿, Git, Rust, Java, Swift, 빌드 도구 등 |
-| `#6C5001` 호박 | JavaScript, JSON·TOML·YAML 등 데이터, 압축 파일 |
-| `#205462` 파랑 | TypeScript, Python, Docker, C·C++, 워드 문서 등 |
-| `#0A7272` 청록 | Go, 이미지·오디오·영상·3D·자막 등 |
-| `#13694D` 녹색 | 폴더 |
-
-## 아이콘
+- 파일은 테두리나 배경 없이 확장자 글자만 보여 줍니다. `.md`는 MD, `.json`은 JSON, `.png`는 PNG입니다. 최대 4글자이고, 1.2px 선을 픽셀 격자에 맞춰 직접 그렸습니다.
+- 언어는 변형 확장자를 하나로 묶습니다(`.ts`, `.mts`, `.cts`는 모두 TS). 확장자가 없는 이름(`LICENSE`, `Dockerfile`, `Makefile` 등)은 이름을 줄인 글자로 보여 줍니다.
+- 폴더는 닫힌 폴더와 열린 폴더 두 가지이며, 테마 강조색인 녹색입니다.
+- 색은 Yuginong Light 팔레트를 바탕으로 했습니다. lock 파일·로그·빌드 결과물처럼 만들어지는 파일은 흐린 회색으로 구분합니다. 모든 색이 탐색기 배경에서 대비 3:1 이상입니다.
 
 <!-- icons:start -->
 | 아이콘 | 쓰임 |
@@ -490,27 +475,7 @@ Yuginong Light 컬러 테마와 함께 쓰도록 만든 VS Code 파일·폴더 �
 
 ## 알아둘 점
 
-- 확장자가 없는 이름(`LICENSE`, `Dockerfile`, `Makefile`, `Procfile` 등)은 이름을 줄인 글자로 보여 줍니다. 점으로 시작하는 파일(`.gitignore`, `.editorconfig` 등)은 VS Code가 점 뒤를 확장자로 보기 때문에 확장자처럼 연결합니다.
-- `README.md`, `package.json`, `tsconfig.json`처럼 확장자가 있는 파일은 이름과 상관없이 확장자 글자(MD, JSON)로 보입니다. `*.test.ts`, `*.d.ts`, `*.min.js`도 마지막 확장자(TS, JS)를 따르고, `package-lock.json`, `pnpm-lock.yaml`처럼 다른 확장자를 쓰는 lock 파일도 확장자 글자(JSON, YML)로 보입니다.
-- 목록에 없는 확장자는 VS Code가 알아본 언어의 글자로 보이고, 그것도 없으면 기본 파일 아이콘으로 보입니다.
+- `README.md`, `package.json`처럼 확장자가 있는 파일은 이름과 상관없이 확장자 글자로 보입니다. `*.test.ts`, `*.min.js`, `package-lock.json`도 마지막 확장자(TS, JS, JSON)를 따릅니다.
+- 점으로 시작하는 파일(`.gitignore`, `.editorconfig` 등)은 VS Code가 점 뒤를 확장자로 보기 때문에 확장자처럼 연결합니다.
 - `.m`(Objective-C·MATLAB), `.v`(Verilog·V·Coq)처럼 여러 언어가 같이 쓰는 확장자는 VS Code가 판단한 언어로 구분합니다. 해당 언어 확장이 설치돼 있어야 맞는 글자가 나옵니다.
-- 폴더는 이름과 상관없이 모두 같은 모양입니다. 열림과 닫힘만 구분합니다.
-- 다크 테마용 변형은 없습니다.
-
-## 릴리스
-
-1. `package.json`의 `version`과 `CHANGELOG.md`를 고쳐서 커밋합니다.
-2. 같은 버전으로 태그를 푸시하면 GitHub Actions가 `.vsix`를 만들어 Release에 올립니다.
-
-   ```bash
-   git tag v0.2.1
-   git push origin v0.2.1
-   ```
-
-태그와 `package.json`의 버전이 다르면 빌드가 실패합니다. 릴리스 노트는 GitHub가 커밋 기록으로 자동으로 만듭니다.
-
-`vsce`는 README 안의 SVG 이미지를 허용하지 않으므로 README에는 이미지를 넣지 않습니다.
-
-## 라이선스
-
-[MIT](LICENSE)
+- 라이트 테마 전용입니다.
