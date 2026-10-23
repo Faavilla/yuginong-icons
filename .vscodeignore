@@ -1,6 +1,7 @@
 # Repository files not needed in the extension package
 .github/**
 .gitignore
+SECURITY.md
 
 # Local-only folders and files (gitignored, but vsce packages from the working tree)
 .vscode/**
